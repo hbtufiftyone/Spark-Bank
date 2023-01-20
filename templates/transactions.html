@@ -1,0 +1,26 @@
+{% extends 'spark.html' %} 
+{% block title %} Transactions {% endblock %} 
+{% block content %}
+	<div style="display: flex; justify-content: center;">
+		<table>
+			<tr>
+				<th>Sender</th>
+				<th>Reciever</th>
+				<th>Amount</th>
+				<th>Status</th>
+			</tr>
+			{% for i in data %}
+			<tr>
+				<td>{{ i[0] }}</td>
+				<td>{{ i[1] }}</td>
+				<td>${{ i[2] }}</td>
+				{% if i[3]=='success' %}
+				<td style="color: rgb(54, 153, 54)">{{ i[3] }}</td>
+				{% else %}
+				<td style="color: rgb(213, 42, 3);">{{ i[3] }}</td>
+				{% endif %}
+			</tr>	
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}

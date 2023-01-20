@@ -1,0 +1,98 @@
+{% extends 'spark.html' %}
+{% block title %} Transfers {% endblock %}
+{% block content %}
+<div class="grid-container">
+	<div class="grid-item">
+		<div class="photo">
+			<div class="circle">
+				<img style="width: auto; height: 150%;" src="{{ user_data[0][4] }}" alt="Elon Musk" sizes="" srcset="">
+			</div>
+			<div>
+				<div class="name" id="sender">{{ user_data[0][0] }}</div>
+				<div class="balance">Balance: ${{ user_data[0][3] }}</div>
+			</div>
+		</div>
+		<div class="transaction-history">
+			<div class="title">Transaction History</div>
+			<div class="table" style="height: 260px; overflow: auto;">
+				<table>
+					<tr style="width: 100%;">
+						<th>Sender</th>
+						<th>Reciever</th>
+						<th>Amount</th>
+						<th>Status</th>
+					</tr>
+					{% for k in transactions %}
+					<tr>
+						<td>{{ k[0] }}</td>
+						<td>{{ k[1] }}</td>
+						<td>{{ k[2] }}</td>
+						{% if k[3]=='success' %}
+							<td style="color: rgb(54, 153, 54);">{{ k[3] }}</td>
+						{% else %}
+							<td style="color: rgb(213, 42, 3);">{{ k[3] }}</td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+
+				</table>
+			</div>
+
+		</div>
+	</div>
+	<div class="grid-item">
+		<div class="title">Transfer Money</div>
+		<div>
+			$ <input style="padding: 5px; border-radius: 5px; width: 370px;" id="money" type="text">
+			<div class="total-money"></div>
+		</div>
+		<div class="scroll-div">
+			{% for i in data %}
+			<div class="card">
+
+				<div class="circle2">
+					<img style="width: 100%; height: 100%;" src="{{ i[4] }}" alt="">
+				</div>
+
+				<div style="margin-left: 5px;" class="small-info">
+					<div class="small-name">{{ i[0] }}</div>
+					<div class="small-balance">${{ i[3] }}</div>
+				</div>
+
+				<div class="checkbox">
+					<button class="send" id="send" onclick="send('{{ i[0] }}')">Send</button>
+				</div>
+
+			</div>
+			{% endfor %}
+		</div>
+		<!-- <div class="transfer">
+			<button>Transfer</button>
+		</div> -->
+	</div>
+</div>
+<script>
+	function send(username) {
+		let sender = document.getElementById('sender').innerText
+		let money = document.getElementById('money').value
+		if (money!==''){
+		$.ajax({
+			data: {
+				money: $('#money').val(),
+				sender: sender,
+				reciever: username
+			},
+			type: 'POST',
+			url: '/transferto'
+		})
+			.done(function (data) {
+				// console.log(data);
+				location.reload();
+			});
+		}
+		else{
+			alert('Please Enter Money to Transfer!')
+		}
+	}
+</script>
+{% endblock %}

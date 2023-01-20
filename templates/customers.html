@@ -1,0 +1,28 @@
+{% extends 'spark.html' %} 
+{% block title %} Our Customers {% endblock %} 
+{% block content %}
+	<div style="display: flex; justify-content: center;">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Account No.</th>
+				<th>Balance</th>
+				<th>View</th>
+			</tr>
+			{% for i in data %}
+			<tr>
+				<td>{{ i[0] }}</td>
+				<td>{{ i[1] }}</td>
+				<td>{{ i[2] }}</td>
+				<td style="color:rgb(54, 153, 54);">${{ i[3] }}</td>
+				<td style="display: flex; justify-content: center;">
+					<div id="view">
+					<a href="/view?customer={{ i[0] }}">view</a>
+				</div>
+				</td>
+			</tr>	
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
