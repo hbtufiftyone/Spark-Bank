@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, render_template, request
 import sqlite3 as sql
 
-
 app=Flask(__name__)
 
 @app.route('/')
@@ -79,4 +78,5 @@ def transactions():
 		rows = cur.fetchall()
 	return render_template('transactions.html',data=rows[::-1])
 
-app.run(debug=True,port=8080)
+if __name__=='__main__':
+        app.run(debug=True,port=8080)
