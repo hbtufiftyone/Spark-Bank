@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = "docker.io"
         DOCKER_USERNAME = credentials('sachin887')
-        DOCKER_PASSWORD = credentials('dockerhub-password')
+        DOCKER_PASSWORD = credentials('Loveyoumom@07')
         IMAGE_NAME = "sachin1"
         IMAGE_TAG = "latest"
     }
