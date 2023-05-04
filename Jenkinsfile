@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = "https://hub.docker.com/repository/docker/sachin887/assignment"
+        DOCKER_REGISTRY = "sachin887/assignment"
         DOCKER_USERNAME = credentials('sachin887')
         DOCKER_PASSWORD = credentials('Loveyoumom@07')
         IMAGE_NAME = "sachin1"
