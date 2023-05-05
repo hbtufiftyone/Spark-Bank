@@ -20,7 +20,7 @@ pipeline {
         }
         stage('deploy to k8s') {
             steps{
-                scripts {
+                script {
                     withCredentials([file(credentialsId: 'deployee', variable: 'test')]) {
                        sh "kubectl apply -f deployment.yml --kubeconfig=$test"
                          sh "kubectl apply -f Servicefile.yml --kubeconfig=$test"
