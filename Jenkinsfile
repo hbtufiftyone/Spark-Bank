@@ -23,7 +23,7 @@ pipeline {
                 scripts {
                     withCredentials([file(credentialsId: 'deployee', variable: 'test')]) {
                        sh "kubectl create -f deployment.yml ."
-                        sh "kubectl create -f Servicefile.yml ."
+                         sh "kubectl create -f Servicefile.yml ."
                     }
                 }
             }
