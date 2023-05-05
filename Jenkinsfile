@@ -11,10 +11,10 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'passwd')]) {
                       sh 'docker login -u sachin887 -p ${passwd}'
-                        sh 'docker build -t assignment/sachin1 .'
+                        sh 'docker build -t sachin887/assignment .'
                     }
                    
-                      sh "docker push assignment/sachin1:latest"
+                      sh "docker push sachin887/assignment:latest"
                 }
             }
         }
