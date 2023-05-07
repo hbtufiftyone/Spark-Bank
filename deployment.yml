@@ -16,4 +16,4 @@ spec:
         - name: assignment 
           image: sachin887/assignment:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
