@@ -11,7 +11,7 @@ pipeline {
          steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'passwd')]) {
-                      sh 'docker login -u sachin887 -p ${passwd}
+                      sh 'docker login -u sachin887 -p ${passwd}'
                         
                         sh 'docker build -t sachin887/assignment .'
                     }
