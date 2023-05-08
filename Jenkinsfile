@@ -7,7 +7,7 @@ pipeline {
 //              git branch: 'main', url: 'https://github.com/hbtufiftyone/Spark-Bank'
 //            }
 //    }
-         stage(' push image to dhub'){
+         stage(' push image to hub'){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'passwd')]) {
