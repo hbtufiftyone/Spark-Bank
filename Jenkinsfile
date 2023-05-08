@@ -7,15 +7,6 @@ pipeline {
               git branch: 'main', url: 'https://github.com/hbtufiftyone/Spark-Bank'
             }
     }
-        stage('Generate Artifact'){
-    steps{
-     script{
-      sh '''
-       tar -cf app.tar ./
-         '''
-     }
-    }
-  }
 //         stage(' push image to dockerhub'){
 //         steps{
 //                script{
