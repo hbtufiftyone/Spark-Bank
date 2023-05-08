@@ -15,7 +15,7 @@ pipeline {
                         
                         sh 'docker build -t sachin887/assignment .'
                     }
-                   
+                  
                         sh "docker push sachin887/assignment:latest"
               }
             }
